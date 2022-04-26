@@ -1,0 +1,101 @@
+<!-- pages/home/index.wxml -->
+<view class='container'>
+	<!-- search -->
+	<view class='search'>
+		<view class="search-input">
+			<image
+			 class="search-icon"
+			 style="margin-left: 10px;"
+			 src="/image/ath.png"
+			 mode="aspectFit"
+			/>
+			<input class="serach-text" placeholder="搜索商品" />
+			<image class="search-icon" src="/image/camera.png" mode="aspectFit" />
+			<button class="search-btn" type="warn">
+				<text class="search-txt">搜索</text>
+			</button>
+		</view>
+	</view>
+	<!-- 导航栏 -->
+	<view class="navbar">
+		<block wx:for="{{navbarTitle}}" wx:key="index">
+			<view class="navbar-item {{navbarActiveIndex === index ? 'navbar-item-active' : ''}}" data-navbar-index="{{index}}" catchtap="onNavBarTap">
+				<text>{{item}}</text>
+			</view>
+		</block>
+	</view>
+	<!-- 区域滚动 -->
+	<scroll-view class="content-scroll" scroll-y="true">
+		<view class="bgphoto">
+			<image class="bgImage" src="/image/background.png" />
+			<!-- swiper -->
+			<view class="indicator-wrap">
+				<swiper
+				 indicator-dots="{{indicatorDots}}"
+				 vertical="{{vertical}}"
+				 autoplay="{{autoplay}}"
+				 interval="{{interval}}"
+				 duration="{{duration}}"
+				 circular="true"
+				 indicator-color="rgba(255,255,255,.3)"
+				 indicator-active-color="#fff"
+				 style="width:100%; height:300rpx"
+				>
+					<block wx:for="{{swipers}}" wx:key="index">
+						<swiper-item>
+							<image class="swiper-item" src="{{item.image}}" mode="aspectFill" />
+						</swiper-item>
+					</block>
+				</swiper>
+			</view>
+		</view>
+		<!-- 图标分类 -->
+		<view class="big-logo">
+			<block wx:for="{{logos}}" wx:key="index">
+				<view class="logoinfo">
+					<image style="width:100rpx;height:100rpx;" src="{{item.image}}" mode="aspectFit" />
+					<text class="logotext">{{item.title}}</text>
+				</view>
+			</block>
+			<image src="/icon/bar.png" style="width: 100%; height: 15px;" />
+		</view>
+		<image src="/image/ad.png" style="width: 100%; height: 100px;" />
+		<!-- 京东秒杀 -->
+		<view class='page-margin'>
+			<view class="page-row">
+				<image class='theme_img' src="/image/bej0.jpg" mode="aspectFit" />
+				<view class='theme_more'>
+					<text>超值好物轮番秒</text>
+					<image src="/image/arrowright.png" mode="aspectFill" />
+				</view>
+			</view>
+			<scroll-view class='theme_scroll' scroll-x="true">
+				<block wx:for-items="{{quicks}}" wx:key="index">
+					<view style="display: inline-block;">
+						<view class="page-column">
+							<image src="{{item.image}}" mode="aspectFill" />
+							<image src="/image/text.png" class="privceImage" mode="widthFix" />
+							<text>{{item.price}}</text>
+						</view>
+					</view>
+				</block>
+			</scroll-view>
+		</view>
+		<!-- 会场分类 -->
+		<view class="bigpage">
+			<block wx:for="{{pageRow}}" wx:key="index">
+				<view class='page-row' style="justify-content:space-between">
+					<view class="pageTitle">
+						<text class="titleText">{{item.title}}</text>
+						<image style="width:170rpx;height:190rpx;border-radius: 15px;" src="{{item.image}}" mode="aspectFill" />
+					</view>
+				</view>
+			</block>
+		</view>
+		<!-- 到底提示 -->
+		<view class="bottomImage">
+			<image class="boimage" src="/image/last.png" />
+		</view>
+	</scroll-view>
+</view>
+

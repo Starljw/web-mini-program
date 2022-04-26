@@ -1,0 +1,63 @@
+<!-- pages/lsit/index.wxml -->
+<view>
+     <view>
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+            <!-- 搜索框 -->
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="手机 ×" placeholder-class="phcolor"/>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+ <!-- 导航栏 -->
+ <view class="navtitle">
+    <view class="nav-whole">综合<image src="/image/info_image/2.png" class="nav-whole-pic"></image></view>
+    <view class="nav-sale">销量</view>
+    <view class="nav-price">价格</view>
+    <view class="nav-pic"><image class="nav-picture" src="/image/info_image/4.png" mode="aspectFit"></image></view>
+</view>
+<view class="nav-whole-title">
+    <view class="nav-whole-title-logistics">京东物流</view>
+    <view class="nav-whole-title-newproduct">新品</view>
+    <view class="nav-whole-title-brand">品牌</view>
+    <view class="nav-whole-title-sec">拍拍二手</view>
+    <view class="nav-whole-select">筛选  <image src="/image/info_image/3.png" class="nav-whole-pic"></image></view>
+</view>
+
+<view class='prolist'>
+ <block wx:for='{{prolist}}' wx:key="index">
+    <view class='prolist_item' bindtap="switchProductDetail" data-clickindex="{{index}}">
+      <view class='prolist_cover'>
+        <image src='{{item.cover}}'></image>
+      </view>
+      <view class='prolist_info'>
+        <view class='prolist_title'>
+          <text>{{item.title}}</text>
+        </view>
+        <view class='prolist_price'>
+          <text>¥ {{item.price}}</text>
+        </view>
+        
+        <view wx:if="{{item.id== 'ziying'}}" class="prolist_logo">
+        <image src="/image/info_image/6.png" mode="aspectFit" style="width: 30px;height: 30px; margin-right: 10rpx;"></image>
+        <image src="/image/info_image/7.png" mode="aspectFit" style="width: 45px;height: 30px; margin-right: 10rpx;"></image>
+        <image src="/image/info_image/8.png" mode="aspectFit" style="width: 30px;height: 30px; margin-right: 10rpx;"></image>
+        <image src="/image/info_image/9.png" mode="aspectFit" style="width: 30px;height: 30px; margin-right: 10rpx;"></image>
+        </view>
+        <view class='prolist_other'>
+          <text class='prolist_conmment'>{{item.comment}}条评价</text>
+          <text class='prolist_rate'>{{item.rate}}好评</text>
+        </view>
+
+        <view class='prolist_other'>
+          <text class='prolist_conmment'>{{item.shopname}}</text>
+          <text class='prolist_inshop'>进店 ></text>
+        </view>
+
+      </view>
+    </view>
+  </block>
+</view>

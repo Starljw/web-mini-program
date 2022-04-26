@@ -1,0 +1,6 @@
+{
+  "vavigationBarTitleText": "购物车",
+  "usingComponents":{
+    "amount":"/components/amount/index"
+  }
+}
